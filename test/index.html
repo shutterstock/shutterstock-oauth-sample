@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Mocha Tests</title>
+  <link rel="stylesheet" href="vendor/mocha.css" />
+</head>
+<body>
+  <div id="mocha"></div>
+  <script src="vendor/jquery.js"></script>
+  <script src="vendor/chai.js"></script>
+  <script src="vendor/sinon.js"></script>
+  <script src="vendor/mocha.js"></script>
+  <script>mocha.setup('bdd')</script>
+  <script src="../shutterstock-oauth.js"></script>
+  <script src="oauth_tests.js"></script>
+  <script>
+    mocha.checkLeaks();
+    mocha.globals(['jQuery']);
+    mocha.run();
+  </script>
+</body>
+</html>

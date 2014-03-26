@@ -1,0 +1,39 @@
+<html>
+<head>
+  <script type="text/javascript" src="../shutterstock-oauth.js"></script>
+</head>
+<body>
+  <p>
+    <button id="shutterstock-authorize" >authorize</button>
+  </p>
+  <h3>Output</h3>
+  <hr/>
+  <div id="output" style="font-family:monospace"></div>
+  <script>
+      var output = document.getElementById("output")
+      var log = function (html) { 
+        output.insertAdjacentHTML('afterBegin', html);
+      };
+      var myCallback = function (callbackName, data) { 
+        log('<hr/>');
+        if (data) {
+          for (var key in data){ 
+            log("<div>" + key + ": " + data[key] + "<\/div>");
+          }
+        }
+        log("<div>Callback: " + callbackName + "<\/div>");
+      };
+
+      var auth = new ShutterstockOAuth({
+        client_id: "INSERT_YOUR_CLIENT_ID_HERE",
+        scope: "user.email user.address",
+        redirect_endpoint: "/example/completed.html",
+        success:  function(data) { myCallback("success", data); },
+        failure:  function(data) { myCallback("failure", data); },
+        complete: function(data) { myCallback("complete", data); }
+      });
+
+      document.getElementById("shutterstock-authorize").addEventListener("click", auth.authorize, true);
+  </script>
+</body>
+</html>
