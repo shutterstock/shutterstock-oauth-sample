@@ -85,7 +85,10 @@ var ShutterstockOAuth = (function () {
         //optional
         type:          _su.fallback(options.request_type, "web_server"),
         state:         _su.fallback(options.state, _su.randomString()),
-        response_type: _su.fallback(options.response_type, "code")
+        response_type: _su.fallback(options.response_type, "code"),
+        site:           options.site,
+        //constant
+        display:       "popup"
       };
       self.realm    = _su.fallback(options.realm, "customer");
       self.endpoint = _su.fallback(options.endpoint, _su.endpointForRealm(self.realm));
