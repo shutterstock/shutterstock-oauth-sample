@@ -68,6 +68,13 @@ Possible Values:
 * `offset`:      "offset.com"
 * `contributor`: "contributor-accounts.shutterstock.com"
 
+##### site *(optional)*
+
+If the `customer` realm is used, you can specify the site.
+
+Possible Values:
+
+* `premier`:    For users of "premier.shutterstock.com"
 
 ##### success *(optional)*
 
