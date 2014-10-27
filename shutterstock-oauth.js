@@ -103,15 +103,23 @@ var ShutterstockOAuth = (function () {
       self.authorize = function () {
         _su.ensure(oauthUrl, "oauthUrl");
         self.popup = window.open(oauthUrl, "shutterstockAuth", popupLocation());
-        monitorPopup();
+        beginMonitoringPopup();
       };
 
       //private
 
+      var beginMonitoringPopup = function () {
+        if (!self.isMonitoring) { monitorPopup(); }
+      }
+
       var monitorPopup = function (context) {
+        self.isMonitoring = true;
+
         if (self.popup.closed) {
+          self.isMonitoring = false;
           handleResponse("popup:closed");
         } else if (_su.isSameDomain(self.popup))  {
+          self.isMonitoring = false;
           handleResponse("completed", self.popup.document.URL)
           self.popup.close();
         } else {
