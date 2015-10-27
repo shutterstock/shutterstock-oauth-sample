@@ -1,13 +1,3 @@
-
-
-### OAuth is currently in private alpha. More documention will be released once the feature is released publicly.
-
-<br/>
-
------
-
-<br/>
-
 # Basic Usage
 
 Include the script.
