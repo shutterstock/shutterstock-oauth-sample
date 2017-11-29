@@ -9,5 +9,17 @@
   "repository": "https://github.com/shutterstock/shutterstock-oauth-sample.git",
   "scripts": {
     "test": "open test/index.html"
-  }
+  },
+  "keywords": ["oauth", "example", "shutterstock"],
+  "homepage": "https://github.com/shutterstock/shutterstock-oauth-sample",
+  "bugs": {
+    "url": "https://github.com/shutterstock/shutterstock-oauth-sample/issues"
+  },
+  "description": "Shutterstock Oauth Sample code, for interacting with the Shutterstock API",
+  "contributors": [
+    "wusher <wusher@shutterstock.com>",
+    "David Fenster <dfenster@users.noreply.github.com>",
+    "Richard Littauer <richard.littauer@gmail.com>",
+    "cesine <cesine@yahoo.com>"
+  ]
 }
