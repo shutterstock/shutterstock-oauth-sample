@@ -1,3 +1,7 @@
+# DEPRECATED
+
+This repo is no longer publicly supported.
+
 # Basic Usage
 
 Include the script.
@@ -28,7 +32,7 @@ Bind the authorize method to a click event
 
 Inside the example folder there is a file index.html. You will need to change `INSERT_YOUR_CLIENT_ID_HERE` to your client id. For the redirect flow to work, the example will need to be running in a web server. The easiest way to do this is run `python -m SimpleHTTPServer` in the root of the project. Then open [http://localhost:8000/example/index.html](http://localhost:8000/example/index.html).
 
-The authorize button will open an authorize pop-up. Below the button, there is a log of the data sent to the callbacks. 
+The authorize button will open an authorize pop-up. Below the button, there is a log of the data sent to the callbacks.
 
 # Options
 
