@@ -102,7 +102,8 @@ var ShutterstockOAuth = (function () {
 
       self.authorize = function () {
         _su.ensure(oauthUrl, "oauthUrl");
-        self.popup = window.open(oauthUrl, "shutterstockAuth", popupLocation());
+        //if the name is not "_blank" in Chrome on iOS self.popup will be null
+        self.popup = window.open(oauthUrl, "_blank", popupLocation());
         beginMonitoringPopup();
       };
 
@@ -115,7 +116,11 @@ var ShutterstockOAuth = (function () {
       var monitorPopup = function (context) {
         self.isMonitoring = true;
 
-        if (self.popup.closed) {
+        if(!self.popup){
+            self.isMonitoring = false;
+            handleResponse("not_supported");
+        }
+        else if (self.popup.closed) {
           self.isMonitoring = false;
           handleResponse("popup:closed");
         } else if (_su.isSameDomain(self.popup))  {
@@ -131,6 +136,9 @@ var ShutterstockOAuth = (function () {
         var data = {};
         if (_su.isPresent(responseUrl)) {
           data = _su.getUrlVars(responseUrl);
+        }
+        if (userAction === "not_supported") {
+          data = _su.clone(POPUP_NOT_SUPPORTED_RESPONSE);
         }
         if (userAction === "popup:closed") {
           data = _su.clone(POPUP_CLOSED_RESPONSE);
@@ -160,6 +168,11 @@ var ShutterstockOAuth = (function () {
         return 'width='+width+', height='+height+', top='+top+', left='+left;;
       };
 
+      var POPUP_NOT_SUPPORTED_RESPONSE = {
+        error: "not_supported",
+        error_description: "This browser does not support this feature.",
+        error_reason: "not_supported"
+      };
       var POPUP_CLOSED_RESPONSE = {
         error: "access_denied",
         error_description: "The popup was closed before authorization was completed.",
